@@ -1,12 +1,14 @@
 package ch.cern.todo.service;
 
-import ch.cern.todo.entity.Category;
 import ch.cern.todo.entity.Task;
+import ch.cern.todo.entity.User;
 import ch.cern.todo.exception.TaskNotFoundException;
 import ch.cern.todo.repository.CategoryRepository;
 import ch.cern.todo.repository.TaskRepository;
 import ch.cern.todo.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,5 +58,14 @@ public class TaskServiceImpl implements TaskService{
     private Task unwrapTask(Optional<Task> entity, Long userId, Long categoryId) {
         if (entity.isPresent()) return entity.get();
         else throw new TaskNotFoundException(userId, categoryId);
+    }
+
+    private User getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+            return this.userRepository.findByUsername(username).orElse(null);
+        }
+        return null;
     }
 }

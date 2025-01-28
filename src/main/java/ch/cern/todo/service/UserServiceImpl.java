@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User getUser(Long id) {
         Optional<User> user = this.userRepository.findById(id);
-        return this.unwrapUser(user, id);
+        return unwrapUser(user, id);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return (List<User>) this.userRepository.findAll();
     }
 
+    @Override
+    public User getUserByUsername(String username) {
+        return this.userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+    }
+
     static User unwrapUser(Optional<User> entity, Long id) {
         if (entity.isPresent()) return entity.get();
         else throw new UserNotFoundException(id);
@@ -47,6 +52,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        User user = this.userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
+
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .roles(user.getRole().name())
+                .build();
     }
 }

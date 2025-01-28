@@ -1129,3 +1129,15 @@ Wrong user name or password [28000-232]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 50 more
+2025-01-27 23:19:47.650727+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "([*]'Vi', 'test', 'USER')"; attendu "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Vi', 'test', 'USER')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Vi', 'test', 'USER') [42001-232]
+2025-01-27 23:20:43.391725+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "([*]'Warwick', 'Heal WW.', '2025-01-31', 2, 4), ('Cait', 'Find Cupcake.', '2025-01-31', 3, 5), ('Punch', 'Do a fistfight.', '2025-01-31', 1, 5), ('Home', 'Go back home', '2025-01-31', 1, 6)"; attendu "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Warwick', 'Heal WW.', '2025-01-31', 2, 4), ('Cait', 'Find Cupcake.', '2025-01-31', 3, 5), ('Punch', 'Do a fistfight.', '2025-01-31', 1, 5), ('Home', 'Go back home', '2025-01-31', 1, 6)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Warwick', 'Heal WW.', '2025-01-31', 2, 4), ('Cait', 'Find Cupcake.', '2025-01-31', 3, 5), ('Punch', 'Do a fistfight.', '2025-01-31', 1, 5), ('Home', 'Go back home', '2025-01-31', 1, 6) [42001-232]
+2025-01-27 23:21:02.847728+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "([*]'Warwick', 'Heal WW.', '2025-01-31', 2, 4), ('Cait', 'Find Cupcake.', '2025-01-31', 3, 5), ('Punch', 'Do a fistfight.', '2025-01-31', 1, 5), ('Home', 'Go back home', '2025-01-31', 1, 6), ('Hextech', 'Create object', '2025-01-31', 3, 6)"; attendu "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Warwick', 'Heal WW.', '2025-01-31', 2, 4), ('Cait', 'Find Cupcake.', '2025-01-31', 3, 5), ('Punch', 'Do a fistfight.', '2025-01-31', 1, 5), ('Home', 'Go back home', '2025-01-31', 1, 6), ('Hextech', 'Create object', '2025-01-31', 3, 6)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Warwick', 'Heal WW.', '2025-01-31', 2, 4), ('Cait', 'Find Cupcake.', '2025-01-31', 3, 5), ('Punch', 'Do a fistfight.', '2025-01-31', 1, 5), ('Home', 'Go back home', '2025-01-31', 1, 6), ('Hextech', 'Create object', '2025-01-31', 3, 6) [42001-232]
