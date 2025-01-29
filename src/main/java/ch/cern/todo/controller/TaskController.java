@@ -26,12 +26,24 @@ public class TaskController {
 
     @GetMapping("/user/{userId}/category/{categoryId}")
     public ResponseEntity<Task> getTask(@PathVariable Long userId, @PathVariable Long categoryId) {
-        return new ResponseEntity<>(this.taskService.getTask(userId, categoryId), HttpStatus.OK);
+        User currentUser = this.getCurrentUser();
+
+        if (currentUser.getId().equals(userId) || currentUser.getRole() == Role.ADMIN) {
+            return new ResponseEntity<>(this.taskService.getTask(userId, categoryId), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @PostMapping("/user/{userId}/category/{categoryId}")
     public ResponseEntity<Task> saveTask(@Valid @RequestBody Task task, @PathVariable Long userId, @PathVariable Long categoryId) {
-        return new ResponseEntity<>(this.taskService.saveTask(task, userId, categoryId), HttpStatus.CREATED);
+        User currentUser = this.getCurrentUser();
+
+        if (currentUser.getId().equals(userId) || currentUser.getRole() == Role.ADMIN) {
+            return new ResponseEntity<>(this.taskService.saveTask(task, userId, categoryId), HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
 

@@ -1,11 +1,11 @@
 INSERT INTO users (username, password, role)
 VALUES
-('Viktor', 'toto', 'ADMIN'),
-('Ryze', 'tata', 'USER'),
-('Orianna', 'titi', 'USER'),
-('Powder', 'tito', 'USER'),
-('Vi', 'test', 'USER'),
-('Jayce', 'test', 'USER');
+('Viktor', '$2a$10$oRlrPjWzAFKI9s5ywAB3LOOohARBFuq2TnDB709/aKlttTTDtQHL2', 'ADMIN'),
+('Ryze', '$2a$10$BhGTQ01ROvG/jqwTnyvxvOujbpIvXGw0ssftKwWAimPJrNdWttQYK', 'USER'),
+('Orianna', '$2a$10$BhGTQ01ROvG/jqwTnyvxvOujbpIvXGw0ssftKwWAimPJrNdWttQYK', 'USER'),
+('Powder', '$2a$10$BhGTQ01ROvG/jqwTnyvxvOujbpIvXGw0ssftKwWAimPJrNdWttQYK', 'USER'),
+('Vi', '$2a$10$BhGTQ01ROvG/jqwTnyvxvOujbpIvXGw0ssftKwWAimPJrNdWttQYK', 'USER'),
+('Jayce', '$2a$10$BhGTQ01ROvG/jqwTnyvxvOujbpIvXGw0ssftKwWAimPJrNdWttQYK', 'USER');
 
 INSERT INTO category (name, description)
 VALUES
